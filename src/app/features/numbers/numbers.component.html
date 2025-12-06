@@ -1,0 +1,24 @@
+<div class="numbers-screen screen" id="numberScreen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  <div class="score">Score: {{ score }} ⭐</div>
+  <div class="learning-card">
+    <div class="number-display">{{ currentNumber }}</div>
+    <div class="emoji-display">{{ currentEmoji }}</div>
+    <div class="dots-container">
+      <div *ngFor="let dot of dots; let i = index" 
+           [class]="dotClass"
+           [style.animation-delay]="getDotDelay(i)">
+      </div>
+    </div>
+    <button class="say-btn green" (click)="sayNumber()">
+      🔊 Say it!
+    </button>
+  </div>
+  <app-navigation
+    [canGoPrevious]="canGoPrevious"
+    [canGoNext]="canGoNext"
+    (previous)="previous()"
+    (next)="next()">
+  </app-navigation>
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

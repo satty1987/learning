@@ -1,0 +1,30 @@
+<div class="shapes-screen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  
+  <div class="score">Score: {{ score }} ⭐</div>
+  
+  <div class="learning-card">
+    <div class="word-display">{{ currentShape.name }}</div>
+    
+    <div class="shape-container">
+      <div class="shape" [ngClass]="'shape-' + currentShape.type">
+        @if(currentShape.emoji){
+        <span >{{ currentShape.emoji }}</span>
+        }
+      </div>
+    </div>
+    
+    <button class="say-btn indigo" (click)="sayShape()">
+      🔊 Say it!
+    </button>
+  </div>
+  
+  <app-navigation
+    [canGoPrevious]="canGoPrevious"
+    [canGoNext]="canGoNext"
+    (previous)="previous()"
+    (next)="next()">
+  </app-navigation>
+  
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

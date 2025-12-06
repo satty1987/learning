@@ -1,0 +1,108 @@
+.animals-screen {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #10b981, #059669, #14b8a6);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.back-btn {
+  background: white;
+  color: #10b981;
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
+  border: none;
+  border-radius: 50px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  align-self: flex-start;
+}
+
+.back-btn:hover {
+  transform: scale(1.1);
+}
+
+.score {
+  text-align: center;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: bold;
+  color: white;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.learning-card {
+  background: white;
+  border-radius: 30px;
+  padding: clamp(30px, 8vw, 60px);
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.learning-card:hover {
+  transform: scale(1.05);
+}
+
+.emoji-display {
+  font-size: clamp(5rem, 20vw, 10rem);
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.1); 
+  }
+}
+
+.word-display {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.sound-display {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: 30px;
+  color: #10b981;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.say-btn {
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+  color: white;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: bold;
+  padding: clamp(15px, 4vw, 25px) clamp(30px, 6vw, 50px);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.say-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.say-btn:active {
+  transform: scale(1.05);
+}

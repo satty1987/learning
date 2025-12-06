@@ -1,0 +1,18 @@
+<div class="abc-screen screen" id="abcScreen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  <div class="score">Score: {{ score }} ⭐</div>
+  <div class="learning-card">
+    <div class="letter-display">{{ currentItem.letter }}</div>
+    <div class="word-display">{{ currentItem.emoji }} {{ currentItem.word }}</div>
+    <button class="say-btn" (click)="sayLetter()">
+      🔊 Say it!
+    </button>
+  </div>
+  <app-navigation
+    [canGoPrevious]="canGoPrevious"
+    [canGoNext]="canGoNext"
+    (previous)="previous()"
+    (next)="next()">
+  </app-navigation>
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

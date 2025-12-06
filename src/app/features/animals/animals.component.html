@@ -1,0 +1,19 @@
+<div class="animals-screen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  <div class="score">Score: {{ score }} ⭐</div>
+  <div class="learning-card">
+    <div class="emoji-display">{{ currentAnimal.emoji }}</div>
+    <div class="word-display">{{ currentAnimal.name }}</div>
+    <div class="sound-display">{{ currentAnimal.sound }}</div>
+    <button class="say-btn green" (click)="sayAnimal()">
+      🔊 Hear the sound!
+    </button>
+  </div>
+  <app-navigation
+    [canGoPrevious]="canGoPrevious"
+    [canGoNext]="canGoNext"
+    (previous)="previous()"
+    (next)="next()">
+  </app-navigation>
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

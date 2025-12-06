@@ -1,0 +1,18 @@
+<div class="colors-screen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  <div class="score">Score: {{ score }} ⭐</div>
+  <div class="learning-card">
+    <div class="word-display">{{ currentColor.emoji }} {{ currentColor.name }}</div>
+    <div class="color-box" [style.background]="currentColor.hex"></div>
+    <button class="say-btn orange" (click)="sayColor()">
+      🔊 Say it!
+    </button>
+  </div>
+  <app-navigation
+    [canGoPrevious]="canGoPrevious"
+    [canGoNext]="canGoNext"
+    (previous)="previous()"
+    (next)="next()">
+  </app-navigation>
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

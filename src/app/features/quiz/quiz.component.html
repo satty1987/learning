@@ -1,0 +1,67 @@
+<div class="quiz-screen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  <div class="score">Completed: {{ completedCount }}/4 ✅</div>
+  <div class="quiz-container">
+    <div class="question-card">
+      <div class="question-text">👤 What is your name?</div>
+      <input type="text" 
+             class="answer-input" 
+             [(ngModel)]="answers.name"
+             (change)="saveAnswer('name')"
+             placeholder="Type your name here...">
+      <div class="answer-display" *ngIf="isSaved('name')">
+        ✓ Saved: {{ answers.name }}
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-text">👨 What is your father's name?</div>
+      <input type="text" 
+             class="answer-input" 
+             [(ngModel)]="answers.father"
+             (change)="saveAnswer('father')"
+             placeholder="Type father's name here...">
+      <div class="answer-display" *ngIf="isSaved('father')">
+        ✓ Saved: {{ answers.father }}
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-text">👩 What is your mother's name?</div>
+      <input type="text" 
+             class="answer-input" 
+             [(ngModel)]="answers.mother"
+             (change)="saveAnswer('mother')"
+             placeholder="Type mother's name here...">
+      <div class="answer-display" *ngIf="isSaved('mother')">
+        ✓ Saved: {{ answers.mother }}
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-text">🎂 How old are you?</div>
+      <input type="number" 
+             class="answer-input" 
+             [(ngModel)]="answers.age"
+             (change)="saveAnswer('age')"
+             placeholder="Type your age here..."
+             min="1" max="12">
+      <div class="answer-display" *ngIf="isSaved('age')">
+        ✓ Saved: {{ answers.age }}
+      </div>
+    </div>
+
+    <button class="save-btn" (click)="reviewAnswers()">
+      📝 Review My Answers
+    </button>
+
+    <div class="saved-message" 
+         [class.success]="messageType === 'success'"
+         [class.warning]="messageType === 'warning'"
+         [class.error]="messageType === 'error'"
+         *ngIf="showMessage">
+      {{ message }}
+    </div>
+  </div>
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

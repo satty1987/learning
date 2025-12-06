@@ -1,0 +1,19 @@
+<div class="abc-tap-screen">
+    <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+
+    <div class="header">
+        <h1 class="title">🔤 Tap & Learn ABC 🔤</h1>
+        <p class="subtitle">Tap any letter to hear it!</p>
+    </div>
+
+    <div class="alphabet-grid">
+        @for (item of alphabet; track $index) {
+        <div class="letter-card" [class.active]="isActive(item.letter)" (click)="onLetterTap(item)">
+            <div class="letter">{{ item.letter }}</div>
+            <div class="emoji">{{ item.emoji }}</div>
+            <div class="word">{{ item.word }}</div>
+        </div>
+        }
+
+    </div>
+</div>

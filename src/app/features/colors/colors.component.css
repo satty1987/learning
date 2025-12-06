@@ -1,0 +1,106 @@
+.colors-screen {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fbbf24, #f97316, #ec4899);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.back-btn {
+  background: white;
+  color: #f97316;
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
+  border: none;
+  border-radius: 50px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  align-self: flex-start;
+}
+
+.back-btn:hover {
+  transform: scale(1.1);
+}
+
+.score {
+  text-align: center;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: bold;
+  color: white;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.learning-card {
+  background: white;
+  border-radius: 30px;
+  padding: clamp(30px, 8vw, 60px);
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.learning-card:hover {
+  transform: scale(1.05);
+}
+
+.word-display {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+.color-box {
+  width: clamp(150px, 40vw, 300px);
+  height: clamp(150px, 40vw, 300px);
+  border-radius: 30px;
+  margin: 30px auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  animation: pulse 2s infinite;
+  border: 5px solid #f0f0f0;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+  }
+}
+
+.say-btn {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: white;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: bold;
+  padding: clamp(15px, 4vw, 25px) clamp(30px, 6vw, 50px);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.say-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.say-btn:active {
+  transform: scale(1.05);
+}
