@@ -39,6 +39,10 @@ export const routes: Routes = [
     path: 'abc-tap',
     loadChildren: () => import('./features/abc-tap/abc-tap.module').then(m => m.AbcTapModule)
   },
+    {
+    path: 'number-tap',
+    loadChildren: () => import('./features/number-tap/number-tap.module').then(m => m.NumberTapModule)
+  },
   {
     path: '**',
     redirectTo: 'home'

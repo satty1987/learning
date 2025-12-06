@@ -6,15 +6,17 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
+  @if (isActive) {
     <div class="celebration" [class.active]="isActive">
 
-     <div class="celebration-emoji">🎉</div>
+     <!-- <div class="celebration-emoji">🎉</div> -->
 
       @for (star of stars; track star) {
       <div class="star" [style.left.%]="star.left" [style.animation-delay.s]="star.delay"> ⭐ </div>
   }
 
 </div>
+  }
   `,
   styles: [`
     .celebration {

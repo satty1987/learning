@@ -1,0 +1,17 @@
+<div class="abc-tap-screen">
+    <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+
+    <div class="header">
+        <h1 class="title">1️⃣ Tap & Learn Number 🔟</h1>
+        <p class="subtitle">Tap any Number to hear it!</p>
+    </div>
+
+    <div class="alphabet-grid">
+        @for (item of maxnumber; track $index) {
+        <div class="letter-card" [class.active]="isActive(item)" (click)="onNumberTap(item)">
+            <div class="letter">{{ item }}</div>
+        </div>
+        }
+
+    </div>
+</div>
