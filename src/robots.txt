@@ -1,0 +1,4 @@
+# Place in src/robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://yourapp.com/sitemap.xml

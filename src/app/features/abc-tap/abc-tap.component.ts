@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SpeechService } from '../../core/services/speech.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
 
 interface AlphabetItem {
   letter: string;
@@ -50,8 +52,34 @@ export class AbcTapComponent {
 
   constructor(
     private router: Router,
-    private speechService: SpeechService
-  ) {}
+    private speechService: SpeechService,
+    private metaService: MetaTagsService
+  ) {
+
+    const metaTags: MetaConfig = {
+      title: 'Tap & Learn ABC - Kids Learning App',
+      description: 'Tap any letter to hear it and see playful animations — learn the alphabet interactively!',
+      keywords: 'tap abc, abc tap, alphabet game, kids learning, interactive alphabet',
+      image: 'https://yourapp.com/assets/abc-tap-preview.jpg',
+      url: 'https://yourapp.com/abc-tap',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tap & Learn ABC - Kids Learning App",
+      "description": "Tap letters to hear sounds and learn alphabet with interactive animations.",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    };
+
+    this.metaService.injectMetaTags(metaTags, schema);
+  }
 
   goBack(): void {
     this.router.navigate(['/home']);

@@ -5,6 +5,8 @@ import { SpeechService } from '../../core/services/speech.service';
 import { ScoreService } from '../../core/services/score.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
 import { NavigationComponent } from '../../shared/components/navigation/navigation.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface ShapeItem {
   name: string;
@@ -52,11 +54,32 @@ export class ShapesComponent implements OnInit {
   constructor(
     private router: Router,
     private speechService: SpeechService,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private metaService: MetaTagsService
   ) {}
 
   ngOnInit(): void {
     this.score = this.scoreService.getScore('shapes');
+
+    const meta: MetaConfig = {
+      title: 'Learn Shapes - Kids Learning App',
+      description: 'Recognize and name shapes with fun examples and simple descriptions for kids.',
+      keywords: 'shapes, geometry basics, kids learning, shapes for kids',
+      image: 'https://yourapp.com/assets/shapes-preview.jpg',
+      url: 'https://yourapp.com/shapes',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Learn Shapes - Kids Learning App",
+      "description": "Interactive shape learning and recognition for children.",
+      "applicationCategory": "EducationalApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    };
+
+    this.metaService.injectMetaTags(meta, schema);
   }
 
   goBack(): void {

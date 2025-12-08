@@ -5,6 +5,8 @@ import { SpeechService } from '../../core/services/speech.service';
 import { ScoreService } from '../../core/services/score.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
 import { NavigationComponent } from '../../shared/components/navigation/navigation.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 @Component({
   selector: 'app-numbers',
@@ -49,11 +51,32 @@ export class NumbersComponent implements OnInit {
   constructor(
     private router: Router,
     private speechService: SpeechService,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private metaService: MetaTagsService
   ) {}
 
   ngOnInit(): void {
     this.score = this.scoreService.getScore('numbers');
+
+    const meta: MetaConfig = {
+      title: 'Count 1-20 - Kids Learning App',
+      description: 'Learn counting from 1 to 20 with visual aids and sounds, perfect for young learners.',
+      keywords: 'counting, numbers, 1-20, kids learning',
+      image: 'https://yourapp.com/assets/numbers-preview.jpg',
+      url: 'https://yourapp.com/numbers',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Count 1-20 - Kids Learning App",
+      "description": "Interactive counting from 1 to 20 for children.",
+      "applicationCategory": "EducationalApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    };
+
+    this.metaService.injectMetaTags(meta, schema);
   }
 
   goBack(): void {

@@ -22,6 +22,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "src/sitemap.xml",
+                "input": ".",
+                "output": "."
+              },
+              {
+                "glob": "src/robots.txt",
+                "input": ".",
+                "output": "."
               }
             ],
             "styles": [

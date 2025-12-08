@@ -5,6 +5,8 @@ import { SpeechService } from '../../core/services/speech.service';
 import { ScoreService } from '../../core/services/score.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
 import { NavigationComponent } from '../../shared/components/navigation/navigation.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface ColorItem {
   name: string;
@@ -52,11 +54,32 @@ export class ColorsComponent implements OnInit {
   constructor(
     private router: Router,
     private speechService: SpeechService,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private metaService: MetaTagsService
   ) {}
 
   ngOnInit(): void {
     this.score = this.scoreService.getScore('colors');
+
+    const meta: MetaConfig = {
+      title: 'Learn Colors - Kids Learning App',
+      description: 'Explore colors with bright examples and names — a colorful learning experience for kids.',
+      keywords: 'colors, learn colors, kids learning, color names',
+      image: 'https://yourapp.com/assets/colors-preview.jpg',
+      url: 'https://yourapp.com/colors',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Learn Colors - Kids Learning App",
+      "description": "Interactive color learning for children.",
+      "applicationCategory": "EducationalApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    };
+
+    this.metaService.injectMetaTags(meta, schema);
   }
 
   goBack(): void {

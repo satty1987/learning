@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SpeechService } from '../../core/services/speech.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface Card {
   id: number;
@@ -75,11 +77,31 @@ export class MemoryMatchComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private speechService: SpeechService
+    private speechService: SpeechService,
+    private metaService: MetaTagsService
   ) {}
 
   ngOnInit(): void {
     // Start with easy level by default
+    const meta: MetaConfig = {
+      title: 'Memory Match Game - Kids Learning App',
+      description: 'Play the memory match game to pair letters and pictures — great for retention and fun.',
+      keywords: 'memory match, memory game, kids game, matching game',
+      image: 'https://yourapp.com/assets/memory-match-preview.jpg',
+      url: 'https://yourapp.com/memory-match',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Memory Match Game - Kids Learning App",
+      "description": "A fun memory matching game for children to match letters and pictures.",
+      "applicationCategory": "EducationalApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    };
+
+    this.metaService.injectMetaTags(meta, schema);
   }
 
   goBack(): void {

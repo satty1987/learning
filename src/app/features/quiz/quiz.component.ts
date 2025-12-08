@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SpeechService } from '../../core/services/speech.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface QuizAnswers {
   name: string;
@@ -39,8 +41,29 @@ export class QuizComponent {
 
   constructor(
     private router: Router,
-    private speechService: SpeechService
-  ) {}
+    private speechService: SpeechService,
+    private metaService: MetaTagsService
+  ) {
+    const meta: MetaConfig = {
+      title: 'About Me Quiz - Kids Learning App',
+      description: 'A fun little quiz for kids to tell us about themselves — name, age and family details.',
+      keywords: 'kids quiz, about me, childrens quiz',
+      image: 'https://yourapp.com/assets/quiz-preview.jpg',
+      url: 'https://yourapp.com/quiz',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "About Me Quiz - Kids Learning App",
+      "description": "A friendly quiz where kids can answer simple personal questions.",
+      "applicationCategory": "EducationalApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    };
+
+    this.metaService.injectMetaTags(meta, schema);
+  }
 
   goBack(): void {
     this.router.navigate(['/home']);

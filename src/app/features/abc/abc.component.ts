@@ -5,6 +5,8 @@ import { SpeechService } from '../../core/services/speech.service';
 import { ScoreService } from '../../core/services/score.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
 import { NavigationComponent } from '../../shared/components/navigation/navigation.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface AlphabetItem {
   letter: string;
@@ -23,7 +25,7 @@ export class AbcComponent implements OnInit {
   currentIndex = 0;
   score = 0;
   showCelebration = false;
-  
+
   alphabet: AlphabetItem[] = [
     { letter: 'A', word: 'Apple', emoji: '🍎' },
     { letter: 'B', word: 'Balloon', emoji: '🎈' },
@@ -68,11 +70,33 @@ export class AbcComponent implements OnInit {
   constructor(
     private router: Router,
     private speechService: SpeechService,
-    private scoreService: ScoreService
-  ) {}
+    private scoreService: ScoreService,
+    private metaService: MetaTagsService,
+  ) { }
 
   ngOnInit(): void {
     this.score = this.scoreService.getScore('abc');
+    const metaTags: MetaConfig = {
+      title: 'Learn ABC - Kids Learning App',
+      description: 'Interactive alphabet learning for kids. Learn letters A-Z with fun animations and sounds.',
+      keywords: 'abc learning, alphabet, kids education, learning app',
+      image: 'https://yourapp.com/assets/abc-preview.jpg',
+      url: 'https://yourapp.com/abc',
+      type: 'website'
+    }
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kids Learning App",
+      "description": "Educational app for children",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    };
+    this.metaService.injectMetaTags(metaTags, schema);
   }
 
   goBack(): void {

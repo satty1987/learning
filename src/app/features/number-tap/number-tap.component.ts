@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SpeechService } from '../../core/services/speech.service';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface AlphabetItem {
   letter: string;
@@ -24,8 +26,29 @@ export class NumberTapComponent {
 
   constructor(
     private router: Router,
-    private speechService: SpeechService
-  ) {}
+    private speechService: SpeechService,
+    private metaService: MetaTagsService
+  ) {
+    const meta: MetaConfig = {
+      title: 'Tap & Learn Number - Kids Learning App',
+      description: 'Tap numbers to hear them aloud — a playful way to learn counting 1-20.',
+      keywords: 'tap number, number tap, counting, kids learning',
+      image: 'https://yourapp.com/assets/number-tap-preview.jpg',
+      url: 'https://yourapp.com/number-tap',
+      type: 'website'
+    };
+
+    const schema: WebApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tap & Learn Number - Kids Learning App",
+      "description": "Tap numbers to hear them aloud and learn counting interactively.",
+      "applicationCategory": "EducationalApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    };
+
+    this.metaService.injectMetaTags(meta, schema);
+  }
 
   goBack(): void {
     this.router.navigate(['/home']);

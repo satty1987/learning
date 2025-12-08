@@ -5,6 +5,8 @@ import { SpeechService } from '../../core/services/speech.service';
 import { ScoreService } from '../../core/services/score.service';
 import { CelebrationComponent } from '../../shared/components/celebration/celebration.component';
 import { NavigationComponent } from '../../shared/components/navigation/navigation.component';
+import { MetaTagsService } from '../../core/services/meta-tags.service';
+import { MetaConfig, WebApplicationSchema } from '../../core/models/app.model';
 
 interface CategoryItem {
   name: string;
@@ -476,7 +478,8 @@ export class CategoryLearningComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private speechService: SpeechService,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private metaService: MetaTagsService
   ) {}
 
   ngOnInit(): void {
@@ -491,6 +494,26 @@ export class CategoryLearningComponent implements OnInit {
       } else {
         // Load score for this category
         this.score = this.scoreService.getScore(this.categoryId as any) || 0;
+        // set meta tags for this category page
+        const meta: MetaConfig = {
+          title: `${this.category?.title} - Kids Learning App`,
+          description: `${this.category?.title} learning for kids. Tap to explore ${this.category?.title.toLowerCase()} items.`,
+          keywords: `kids ${this.category?.title.toLowerCase()}, learning, ${this.category?.title.toLowerCase()} for kids`,
+          image: `https://yourapp.com/assets/${this.categoryId}-preview.jpg`,
+          url: `https://yourapp.com/learn/${this.categoryId}`,
+          type: 'website'
+        };
+
+        const schema: WebApplicationSchema = {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": `${this.category?.title} - Kids Learning App`,
+          "description": `Interactive ${this.category?.title.toLowerCase()} learning for kids.`,
+          "applicationCategory": "EducationalApplication",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        };
+
+        this.metaService.injectMetaTags(meta, schema);
       }
     });
   }
