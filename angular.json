@@ -16,22 +16,13 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "docs",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "src/sitemap.xml",
-                "input": ".",
-                "output": "."
-              },
-              {
-                "glob": "src/robots.txt",
-                "input": ".",
-                "output": "."
               }
             ],
             "styles": [
