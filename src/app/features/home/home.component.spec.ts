@@ -22,4 +22,8 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  //   it('should navigate back on goBack', () => {
+  //   component.navigateTo('learn/foods');
+  //   expect((TestBed.inject(Router) as any)._navArgs).toEqual(['/home']);
+  // });
 });
