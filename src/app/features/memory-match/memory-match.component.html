@@ -1,0 +1,69 @@
+<div class="memory-match-screen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+
+  <!-- Level Selection -->
+  <div class="level-selection" *ngIf="!gameStarted">
+    <h1 class="title">🎮 Memory Match Game 🎮</h1>
+    <p class="subtitle">Match letters with their pictures!</p>
+    
+    <div class="levels">
+      <button 
+        *ngFor="let level of levels; let i = index"
+        class="level-btn"
+        [class.easy]="i === 0"
+        [class.medium]="i === 1"
+        [class.hard]="i === 2"
+        (click)="selectLevel(i)">
+        {{ level.name }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Board -->
+  <div class="game-container" *ngIf="gameStarted">
+    <div class="game-header">
+      <button class="small-btn" (click)="backToLevels()">← Levels</button>
+      <div class="stats">
+        <span class="stat">Moves: {{ moves }}</span>
+        <span class="stat">Matches: {{ matches }}/{{ totalPairs }}</span>
+      </div>
+      <button class="small-btn reset" (click)="resetGame()">🔄 Reset</button>
+    </div>
+
+    <div class="cards-grid" [ngClass]="gridClass">
+      <div 
+        *ngFor="let card of cards"
+        class="card"
+        [class.flipped]="card.flipped || card.matched"
+        [class.matched]="card.matched"
+        (click)="onCardClick(card)">
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="question-mark">?</span>
+          </div>
+          <div class="card-back">
+            <span [class.letter-content]="card.type === 'letter'" 
+                  [class.emoji-content]="card.type === 'emoji'">
+              {{ card.content }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Completed Modal -->
+    <div class="modal" *ngIf="gameCompleted">
+      <div class="modal-content">
+        <h2 class="modal-title">🎉 Congratulations! 🎉</h2>
+        <p class="modal-text">You completed the game!</p>
+        <p class="modal-stats">Total Moves: {{ moves }}</p>
+        <div class="modal-buttons">
+          <button class="modal-btn primary" (click)="resetGame()">Play Again</button>
+          <button class="modal-btn secondary" (click)="backToLevels()">Change Level</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-celebration [isActive]="showCelebration"></app-celebration>
+</div>

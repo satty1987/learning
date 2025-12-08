@@ -1,0 +1,129 @@
+.category-screen {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  transition: background 0.3s ease;
+}
+
+.back-btn {
+  background: white;
+  color: #333;
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
+  border: none;
+  border-radius: 50px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  align-self: flex-start;
+}
+
+.back-btn:hover {
+  transform: scale(1.1);
+}
+
+.score {
+  text-align: center;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: bold;
+  color: white;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.category-title {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: bold;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-15px); 
+  }
+}
+
+.learning-card {
+  background: white;
+  border-radius: 30px;
+  padding: clamp(30px, 8vw, 60px);
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.learning-card:hover {
+  transform: scale(1.05);
+}
+
+.emoji-display {
+  font-size: clamp(5rem, 20vw, 10rem);
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.1); 
+  }
+}
+
+.name-display {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.description-display {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  margin-bottom: 30px;
+  color: #666;
+  font-style: italic;
+}
+
+.say-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: bold;
+  padding: clamp(15px, 4vw, 25px) clamp(30px, 6vw, 50px);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.say-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.say-btn:active {
+  transform: scale(1.05);
+}

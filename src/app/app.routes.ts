@@ -39,9 +39,18 @@ export const routes: Routes = [
     path: 'abc-tap',
     loadChildren: () => import('./features/abc-tap/abc-tap.module').then(m => m.AbcTapModule)
   },
-    {
+  {
     path: 'number-tap',
     loadChildren: () => import('./features/number-tap/number-tap.module').then(m => m.NumberTapModule)
+  },
+  {
+    path: 'memory-match',
+    loadChildren: () => import('./features/memory-match/memory-match.module').then(m => m.MemoryMatchModule)
+  },
+  {
+    path: 'learn/:category',
+    loadChildren: () => import('./features/category-learning/category-learning.module')
+      .then(m => m.CategoryLearningModule)
   },
   {
     path: '**',
