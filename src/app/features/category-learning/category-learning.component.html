@@ -1,29 +1,30 @@
-<div class="category-screen" [style.background]="categoryColor" *ngIf="category">
+@if (category) {
+<div class="category-screen" [style.background]="categoryColor">
   <button class="back-btn" (click)="goBack()">← Back to Menu</button>
-  
+
   <div class="score">Score: {{ score }} ⭐</div>
-  
+
   <div class="category-header">
     <h1 class="category-title">{{ category.icon }} {{ category.title }}</h1>
   </div>
-
-  <div class="learning-card" *ngIf="currentItem">
+  @if (currentItem) {
+  <div class="learning-card">
     <div class="emoji-display">{{ currentItem.emoji }}</div>
     <div class="name-display">{{ currentItem.name }}</div>
-    <div class="description-display" *ngIf="currentItem.description">
+    @if(currentItem.description) {
+    <div class="description-display">
       {{ currentItem.description }}
     </div>
+    }
     <button class="say-btn" (click)="speakItem()">
       🔊 Say it!
     </button>
   </div>
+  }
 
-  <app-navigation
-    [canGoPrevious]="canGoPrevious"
-    [canGoNext]="canGoNext"
-    (previous)="previous()"
-    (next)="next()">
+  <app-navigation [canGoPrevious]="canGoPrevious" [canGoNext]="canGoNext" (previous)="previous()" (next)="next()">
   </app-navigation>
 
   <app-celebration [isActive]="showCelebration"></app-celebration>
 </div>
+}

@@ -2,25 +2,26 @@
   <button class="back-btn" (click)="goBack()">← Back to Menu</button>
 
   <!-- Level Selection -->
-  <div class="level-selection" *ngIf="!gameStarted">
+   @if(!gameStarted) {
+  <div class="level-selection">
     <h1 class="title">🎮 Memory Match Game 🎮</h1>
     <p class="subtitle">Match letters with their pictures!</p>
-    
+
     <div class="levels">
-      <button 
-        *ngFor="let level of levels; let i = index"
-        class="level-btn"
-        [class.easy]="i === 0"
-        [class.medium]="i === 1"
-        [class.hard]="i === 2"
+      @for (level of levels; track $index; let i = $index ) {
+      <button class="level-btn" [class.easy]="i === 0" [class.medium]="i === 1" [class.hard]="i === 2"
         (click)="selectLevel(i)">
         {{ level.name }}
       </button>
+      }
+
     </div>
   </div>
+}
 
   <!-- Game Board -->
-  <div class="game-container" *ngIf="gameStarted">
+   @if (gameStarted) {
+  <div class="game-container">
     <div class="game-header">
       <button class="small-btn" (click)="backToLevels()">← Levels</button>
       <div class="stats">
@@ -31,19 +32,14 @@
     </div>
 
     <div class="cards-grid" [ngClass]="gridClass">
-      <div 
-        *ngFor="let card of cards"
-        class="card"
-        [class.flipped]="card.flipped || card.matched"
-        [class.matched]="card.matched"
-        (click)="onCardClick(card)">
+      <div *ngFor="let card of cards" class="card" [class.flipped]="card.flipped || card.matched"
+        [class.matched]="card.matched" (click)="onCardClick(card)">
         <div class="card-inner">
           <div class="card-front">
             <span class="question-mark">?</span>
           </div>
           <div class="card-back">
-            <span [class.letter-content]="card.type === 'letter'" 
-                  [class.emoji-content]="card.type === 'emoji'">
+            <span [class.letter-content]="card.type === 'letter'" [class.emoji-content]="card.type === 'emoji'">
               {{ card.content }}
             </span>
           </div>
@@ -64,6 +60,7 @@
       </div>
     </div>
   </div>
+}
 
   <app-celebration [isActive]="showCelebration"></app-celebration>
 </div>

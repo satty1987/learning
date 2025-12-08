@@ -3,7 +3,6 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
   transition: background 0.3s ease;
 }
 
