@@ -1,0 +1,73 @@
+<div class="sequence-memory-screen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+
+  <div class="game-header">
+    <h1 class="title">🎵 Sequence Memory 🎵</h1>
+    <p class="subtitle">Watch and repeat the pattern!</p>
+  </div>
+
+  <!-- Start Screen -->
+  <div class="start-screen" *ngIf="!gameStarted && !gameOver">
+    <div class="info-box">
+      <h2>How to Play:</h2>
+      <p>🎯 Watch the sequence of colors light up</p>
+      <p>🎵 Listen to the sounds</p>
+      <p>👆 Repeat the sequence by clicking</p>
+      <p>📈 The sequence gets longer each round!</p>
+      <div class="high-score" *ngIf="highScore > 0">
+        🏆 High Score: Level {{ highScore }}
+      </div>
+    </div>
+    <button class="start-btn" (click)="startGame()">
+      Start Game
+    </button>
+  </div>
+
+  <!-- Game Screen -->
+  <div class="game-screen" *ngIf="gameStarted && !gameOver">
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-label">Level</span>
+        <span class="stat-value">{{ level }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">High Score</span>
+        <span class="stat-value">{{ highScore }}</span>
+      </div>
+    </div>
+
+    <div class="status-message">
+      <span *ngIf="isPlaying">👀 Watch carefully...</span>
+      <span *ngIf="isPlayerTurn">👆 Your turn!</span>
+    </div>
+
+    <div class="sequence-grid">
+      <div 
+        *ngFor="let item of items"
+        class="sequence-item"
+        [class.active]="activeItem === item.id"
+        [class.disabled]="!isPlayerTurn || isPlaying"
+        [style.background]="item.color"
+        (click)="onItemClick(item.id)">
+        <span class="item-emoji">{{ item.emoji }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div class="game-over-screen" *ngIf="gameOver">
+    <div class="game-over-box">
+      <h2 class="game-over-title">🎮 Game Over! 🎮</h2>
+      <p class="final-score">You reached Level {{ level }}</p>
+      <p class="high-score-text" *ngIf="level === highScore">
+        🎉 New High Score! 🎉
+      </p>
+      <button class="play-again-btn" (click)="startGame()">
+        Play Again
+      </button>
+      <button class="menu-btn-game" (click)="goBack()">
+        Back to Menu
+      </button>
+    </div>
+  </div>
+</div>

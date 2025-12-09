@@ -53,6 +53,16 @@ export const routes: Routes = [
       .then(m => m.CategoryLearningModule)
   },
   {
+    path: 'concentration',
+    loadChildren: () => import('./features/concentration/concentration.module')
+      .then(m => m.ConcentrationModule)
+  },
+  {
+    path: 'sequence-memory',
+    loadChildren: () => import('./features/sequence-memory/sequence-memory.module')
+      .then(m => m.SequenceMemoryModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
