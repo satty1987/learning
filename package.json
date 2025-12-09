@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "coverage": "ng test --coverage",
-    "build:git": "ng build --output-path docs --base-href /kids/ && cp -R docs/browser/* docs/ && rm -rf docs/browser && cp docs/index.html docs/404.html"
+    "build:git": "ng build --output-path docs --base-href /learning/ && cp -R docs/browser/* docs/ && rm -rf docs/browser && cp docs/index.html docs/404.html"
 
   },
   "prettier": {
