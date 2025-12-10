@@ -40,11 +40,17 @@ export class DrawingBoardComponent implements AfterViewInit {
   mode: 'draw' | 'erase' = 'draw';
 
   templates = [
-    { name: 'Cat', emoji: '🐱' },
-    { name: 'House', emoji: '🏠' },
-    { name: 'Tree', emoji: '🌳' },
-    { name: 'Sun', emoji: '☀️' },
-    { name: 'Car', emoji: '🚗' }
+      { name: 'Circle', emoji: '◯' },
+  { name: 'Triangle', emoji: '△' },
+  { name: 'Diamond', emoji: '◇' },
+  { name: 'Rectangle', emoji: '▭' },
+  { name: 'Star', emoji: '☆' },
+  { name: 'Heart', emoji: '♡' },
+  { name: 'Pentagon', emoji: '⬠' },
+  { name: 'Hexagon', emoji: '⬡' },
+   { name: 'Thin Ring', emoji: '◯' },
+  { name: 'Dashed Ring', emoji: '◌' },
+  { name: 'Double Ring', emoji: '◎' },
   ];
 
   showTemplates = false;
@@ -174,7 +180,7 @@ export class DrawingBoardComponent implements AfterViewInit {
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     
-    this.ctx.font = '200px Arial';
+    this.ctx.font = '400px Arial';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
     this.ctx.fillText(template.emoji, centerX, centerY);
