@@ -1,0 +1,104 @@
+<div class="music-maker-screen">
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+    <h1 class="title">🎵 Music Maker 🎵</h1>
+    <div class="header-spacer"></div>
+  </div>
+
+  <div class="main-content">
+    <!-- Instrument Selector -->
+    <div class="instrument-section">
+      <h2 class="section-title">Choose Your Instrument</h2>
+      <div class="instruments-grid">
+        <button
+          *ngFor="let instrument of instruments"
+          class="instrument-btn"
+          [class.active]="selectedInstrument === instrument"
+          (click)="selectInstrument(instrument)">
+          <span class="instrument-emoji">{{ instrument.emoji }}</span>
+          <span class="instrument-name">{{ instrument.name }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Piano Keys -->
+    <div class="piano-section">
+      <h2 class="section-title">Play the Keys</h2>
+      <div class="piano-keys">
+        <button
+          *ngFor="let note of notes"
+          class="piano-key"
+          [class.active]="activeNote === note"
+          [style.background]="note.color"
+          (click)="playNote(note)">
+          <span class="key-emoji">{{ note.emoji }}</span>
+          <span class="key-name">{{ note.name }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Recording Controls -->
+    <div class="recording-section">
+      <h2 class="section-title">Record Your Song</h2>
+      <div class="recording-controls">
+        <button
+          class="control-btn record"
+          [class.active]="isRecording"
+          [disabled]="isPlaying"
+          (click)="isRecording ? stopRecording() : startRecording()">
+          {{ isRecording ? '⏹️ Stop Recording' : '⏺️ Start Recording' }}
+        </button>
+
+        <button
+          class="control-btn play"
+          [disabled]="recordedNotes.length === 0 || isRecording || isPlaying"
+          (click)="playRecording()">
+          ▶️ Play Recording
+        </button>
+
+        <button
+          class="control-btn clear"
+          [disabled]="recordedNotes.length === 0 || isRecording || isPlaying"
+          (click)="clearRecording()">
+          🗑️ Clear
+        </button>
+      </div>
+
+      <div class="recording-info" *ngIf="recordedNotes.length > 0">
+        <span class="notes-count">{{ recordedNotes.length }} notes recorded</span>
+        <span class="recording-indicator" *ngIf="isRecording">● Recording...</span>
+        <span class="playing-indicator" *ngIf="isPlaying">▶️ Playing...</span>
+      </div>
+    </div>
+
+    <!-- Pre-made Songs -->
+    <div class="songs-section">
+      <h2 class="section-title">Play a Song</h2>
+      <div class="songs-grid">
+        <button
+          class="song-btn"
+          [disabled]="isPlaying || isRecording"
+          (click)="playSong('twinkle')">
+          <span class="song-emoji">⭐</span>
+          <span class="song-name">Twinkle Twinkle</span>
+        </button>
+
+        <button
+          class="song-btn"
+          [disabled]="isPlaying || isRecording"
+          (click)="playSong('happy')">
+          <span class="song-emoji">🎂</span>
+          <span class="song-name">Happy Birthday</span>
+        </button>
+
+        <button
+          class="song-btn"
+          [disabled]="isPlaying || isRecording"
+          (click)="playSong('mary')">
+          <span class="song-emoji">🐑</span>
+          <span class="song-name">Mary Had a Little Lamb</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
