@@ -1,18 +1,26 @@
 <div class="colors-screen">
   <button class="back-btn" (click)="goBack()">← Back to Menu</button>
   <div class="score">Score: {{ score }} ⭐</div>
-  <div class="learning-card">
-    <div class="word-display">{{ currentColor.emoji }} {{ currentColor.name }}</div>
-    <div class="color-box" [style.background]="currentColor.hex"></div>
-    <button class="say-btn orange" (click)="sayColor()">
-      🔊 Say it!
+  <div class="score">
+    <button class="back-btn" (click)="viewAllColors = !viewAllColors">
+      {{!viewAllColors ? ' View All Colors' : ' Hide All Colors'}}
     </button>
   </div>
-  <app-navigation
-    [canGoPrevious]="canGoPrevious"
-    [canGoNext]="canGoNext"
-    (previous)="previous()"
-    (next)="next()">
+
+  @if(viewAllColors){
+
+  @for (item of colors; track $index) {
+  <div class="learning-card-all" (click)="speakColor(item.name)">
+    <div class="word-display-all" >{{ item.emoji }} {{ item.name }}</div>
+  </div>
+  }
+
+  }@else {
+  <div class="learning-card">
+    <div class="word-display">{{ currentColor.emoji }} {{ currentColor.name }}</div>
+  </div>
+  <app-navigation [canGoPrevious]="canGoPrevious" [canGoNext]="canGoNext" (previous)="previous()" (next)="next()">
   </app-navigation>
   <app-celebration [isActive]="showCelebration"></app-celebration>
+  }
 </div>

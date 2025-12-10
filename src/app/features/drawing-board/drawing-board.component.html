@@ -1,0 +1,78 @@
+<div class="drawing-board-screen">
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+    <h1 class="title">🎨 Drawing Board</h1>
+    <div class="header-spacer"></div>
+  </div>
+
+  <div class="main-content">
+    <div class="toolbar">
+      <!-- Colors -->
+      <div class="tool-section">
+        <h3 class="tool-title">Colors</h3>
+        <div class="color-picker">
+          <button
+            *ngFor="let color of colors"
+            class="color-btn"
+            [class.active]="selectedColor === color.value && mode === 'draw'"
+            [style.background]="color.value"
+            [title]="color.name"
+            (click)="selectColor(color.value)">
+          </button>
+        </div>
+      </div>
+
+      <!-- Brush Sizes -->
+      <div class="tool-section">
+        <h3 class="tool-title">Brush Size</h3>
+        <div class="size-picker">
+          <button
+            *ngFor="let size of brushSizes"
+            class="size-btn"
+            [class.active]="selectedSize === size.value"
+            (click)="selectSize(size.value)">
+            <div class="size-preview" [style.width.px]="size.value" [style.height.px]="size.value"></div>
+            <span>{{ size.name }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="tool-section">
+        <h3 class="tool-title">Tools</h3>
+        <div class="tools-group">
+          <button class="tool-btn" [class.active]="mode === 'erase'" (click)="toggleMode()">
+            🧽 Eraser
+          </button>
+          <button class="tool-btn" (click)="clearCanvas()">
+            🗑️ Clear
+          </button>
+          <button class="tool-btn" (click)="saveDrawing()">
+            💾 Save
+          </button>
+          <button class="tool-btn" (click)="showTemplates = !showTemplates">
+            🖼️ Templates
+          </button>
+        </div>
+      </div>
+
+      <!-- Templates -->
+      <div class="tool-section" *ngIf="showTemplates">
+        <h3 class="tool-title">Templates</h3>
+        <div class="templates-grid">
+          <button
+            *ngFor="let template of templates"
+            class="template-btn"
+            (click)="loadTemplate(template)">
+            <span class="template-emoji">{{ template.emoji }}</span>
+            <span class="template-name">{{ template.name }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas-container">
+      <canvas #canvas class="drawing-canvas"></canvas>
+    </div>
+  </div>
+</div>

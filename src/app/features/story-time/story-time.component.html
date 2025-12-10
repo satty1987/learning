@@ -1,0 +1,88 @@
+<div class="story-time-screen">
+  <button class="back-btn" (click)="goBack()">← Back</button>
+
+  <!-- Story Selection -->
+  <div class="story-selection" *ngIf="!selectedStory">
+    <h1 class="title">📚 Story Time 📚</h1>
+    <p class="subtitle">Choose a story to read!</p>
+
+    <div class="stories-grid">
+      <div
+        *ngFor="let story of stories"
+        class="story-card"
+        (click)="selectStory(story)">
+        <div class="story-emoji">{{ story.emoji }}</div>
+        <h3 class="story-title">{{ story.title }}</h3>
+        <p class="story-pages">{{ story.pages.length }} pages</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Reading -->
+  <div class="story-reading" *ngIf="selectedStory && currentStoryPage">
+    <div class="story-header">
+      <h2 class="story-name">{{ selectedStory.title }}</h2>
+      <div class="story-progress">
+        <span>Page {{ currentPage + 1 }} of {{ selectedStory.pages.length }}</span>
+        <span>Score: {{ score }} ⭐</span>
+      </div>
+    </div>
+
+    <div class="story-content">
+      <div class="story-image">{{ currentStoryPage.image }}</div>
+      
+      <div class="story-text">
+        {{ currentStoryPage.text }}
+      </div>
+
+      <button class="read-btn" (click)="readPage()">
+        🔊 Read to me
+      </button>
+
+      <!-- Question Section -->
+      <div class="question-section" *ngIf="showQuestion">
+        <h3 class="question-title">{{ currentStoryPage.question }}</h3>
+        <div class="choices">
+          <button
+            *ngFor="let choice of currentStoryPage.choices; let i = index"
+            class="choice-btn"
+            [class.selected]="selectedAnswer === i"
+            (click)="selectAnswer(i)">
+            {{ choice }}
+          </button>
+        </div>
+        <button
+          class="submit-btn"
+          [disabled]="selectedAnswer === null"
+          (click)="submitAnswer()">
+          Submit Answer
+        </button>
+      </div>
+
+      <!-- Result Section -->
+      <div class="result-section" *ngIf="showResult">
+        <div class="result-box" [class.correct]="isCorrect" [class.wrong]="!isCorrect">
+          <div class="result-emoji">{{ isCorrect ? '✅' : '❌' }}</div>
+          <h3>{{ isCorrect ? 'Correct!' : 'Not quite!' }}</h3>
+          <p *ngIf="isCorrect">You earned 10 points!</p>
+          <p *ngIf="!isCorrect">Keep trying!</p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="story-navigation">
+        <button
+          class="nav-btn"
+          [disabled]="!canGoPrevious"
+          (click)="previousPage()">
+          ← Previous
+        </button>
+        <button
+          class="nav-btn next"
+          (click)="nextPage()">
+          {{ showQuestion ? 'Continue' : showResult ? 'Continue' : currentPage === selectedStory.pages.length - 1 ? 'Finish' : 'Next →' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

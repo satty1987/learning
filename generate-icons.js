@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
-const iconsDir = './src/assets/icons';
+const iconsDir = './public/icons';
 
 // Create icons directory if it doesn't exist
 if (!fs.existsSync(iconsDir)) {
@@ -11,7 +11,7 @@ if (!fs.existsSync(iconsDir)) {
 }
 
 // Source image (create a 512x512 PNG logo first)
-const sourceImage = './src/assets/logo.png';
+const sourceImage = './public/transparent-logo.png';
 
 async function generateIcons() {
   console.log('Generating PWA icons...');

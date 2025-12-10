@@ -25,6 +25,7 @@ export class ColorsComponent implements OnInit {
   currentIndex = 0;
   score = 0;
   showCelebration = false;
+  viewAllColors = false;
 
   colors: ColorItem[] = [
     { name: 'Red', hex: '#ef4444', emoji: '🔴' },
@@ -101,6 +102,9 @@ export class ColorsComponent implements OnInit {
   sayColor(): void {
     this.speechService.speak(this.currentColor.name);
     this.celebrate();
+  }
+    speakColor(item: string): void {
+    this.speechService.speak(item);
   }
 
   private celebrate(): void {

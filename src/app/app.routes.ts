@@ -63,6 +63,16 @@ export const routes: Routes = [
       .then(m => m.SequenceMemoryModule)
   },
   {
+    path: 'drawing-board',
+    loadChildren: () => import('./features/drawing-board/drawing-board.module')
+      .then(m => m.DrawingBoardModule)
+  },
+  {
+    path: 'story-time',
+    loadChildren: () => import('./features/story-time/story-time.module')
+      .then(m => m.StoryTimeModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
