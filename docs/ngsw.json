@@ -1,0 +1,113 @@
+{
+  "configVersion": 1,
+  "timestamp": 1765340421361,
+  "index": "/learning/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/learning/chunk-2AEQEWZZ.js",
+        "/learning/chunk-5HJT6W3P.js",
+        "/learning/chunk-BNXMGRWV.js",
+        "/learning/chunk-C7XM6PGK.js",
+        "/learning/chunk-CN7DGZK2.js",
+        "/learning/chunk-EBSOO5TO.js",
+        "/learning/chunk-F6XAR2TZ.js",
+        "/learning/chunk-J3NXX7SX.js",
+        "/learning/chunk-JWZGQ7VX.js",
+        "/learning/chunk-LAUTZF2L.js",
+        "/learning/chunk-NO2QMRXW.js",
+        "/learning/chunk-ODFIBYVS.js",
+        "/learning/chunk-QQBXH6ZL.js",
+        "/learning/chunk-W5YEU5OR.js",
+        "/learning/chunk-XHBA2IXE.js",
+        "/learning/chunk-XMUSSL24.js",
+        "/learning/chunk-XMYIH37J.js",
+        "/learning/chunk-YA4JICNL.js",
+        "/learning/favicon.ico",
+        "/learning/index.html",
+        "/learning/main-S23YZH2A.js",
+        "/learning/manifest.webmanifest",
+        "/learning/styles-66JBG45P.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/learning/icons/icon-128x128.png",
+        "/learning/icons/icon-144x144.png",
+        "/learning/icons/icon-152x152.png",
+        "/learning/icons/icon-192x192.png",
+        "/learning/icons/icon-384x384.png",
+        "/learning/icons/icon-512x512.png",
+        "/learning/icons/icon-72x72.png",
+        "/learning/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/learning/chunk-2AEQEWZZ.js": "aea948c9b9e8fc21f12f3f4d8ed9abb6e247cbbf",
+    "/learning/chunk-5HJT6W3P.js": "88b7b3bc911d45a18500d81738ad0be6f5cc4661",
+    "/learning/chunk-BNXMGRWV.js": "1a84b183b79c40a22b513fa7730ed9fde55e5f38",
+    "/learning/chunk-C7XM6PGK.js": "4f0d8d120c315677d6f99ce007583dfb75c17624",
+    "/learning/chunk-CN7DGZK2.js": "eb5e6dcbbb37dc84bac2248bddcb2e9eef5df82e",
+    "/learning/chunk-EBSOO5TO.js": "908374f010301bc45f7e302de381bcec0cf49d80",
+    "/learning/chunk-F6XAR2TZ.js": "7e072b5c983fa4127e9296ee637e31cfcd35d003",
+    "/learning/chunk-J3NXX7SX.js": "940d9be0dc9acacc232cda10be2b8b9e70a13aef",
+    "/learning/chunk-JWZGQ7VX.js": "ed6077ade5e0ac48650bc534a80143453640131d",
+    "/learning/chunk-LAUTZF2L.js": "bd74f7b4a6b93f35d4e1c5f0acd999d179a0e877",
+    "/learning/chunk-NO2QMRXW.js": "fda4cd0163490f65f18ed1725bd6bc55a1ce0b86",
+    "/learning/chunk-ODFIBYVS.js": "0ff9def5eaf819a4298806eab3bb1acbb10e53ae",
+    "/learning/chunk-QQBXH6ZL.js": "dc70637c2e11d4f93de55e4929e8fcff82c3a34c",
+    "/learning/chunk-W5YEU5OR.js": "d1f93a6f4f8c25791de0d95109da799a0c2c0d21",
+    "/learning/chunk-XHBA2IXE.js": "2e65b12c66de5755a8b08262b86104553a7d1e2a",
+    "/learning/chunk-XMUSSL24.js": "a6f407ec5d0c2b414e89fb3f1e95553d6f1ba470",
+    "/learning/chunk-XMYIH37J.js": "51bf38e37f2beeea9d4de90fa59c6d1fb50a337e",
+    "/learning/chunk-YA4JICNL.js": "fa5bd0467aac888830e28c35ecebcfb791065612",
+    "/learning/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/learning/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/learning/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/learning/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/learning/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/learning/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/learning/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/learning/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/learning/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/learning/index.html": "d1b74df878b9c731b3fa05bcedbee6fa78cd11da",
+    "/learning/main-S23YZH2A.js": "0fe017a233063448ae2fa34016720734cf8caca8",
+    "/learning/manifest.webmanifest": "9e9710149c1d548ecf7d45ddfdad008bc279b67f",
+    "/learning/styles-66JBG45P.css": "aefa3bc740a5f54e94f0dd9059ac73bdd4341605"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

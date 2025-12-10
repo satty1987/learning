@@ -1,0 +1,1 @@
+import{s as n}from"./chunk-YA4JICNL.js";var i=class t{speak(c){let e=new SpeechSynthesisUtterance(c);e.rate=.8,e.pitch=1.2,window.speechSynthesis.speak(e)}cancel(){window.speechSynthesis.cancel()}static \u0275fac=function(e){return new(e||t)};static \u0275prov=n({token:t,factory:t.\u0275fac,providedIn:"root"})};export{i as a};
