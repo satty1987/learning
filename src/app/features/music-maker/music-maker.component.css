@@ -1,7 +1,6 @@
 .music-maker-screen {
   min-height: 100vh;
   background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
-  font-family: 'Comic Sans MS', cursive, sans-serif;
   padding: 20px;
 }
 
