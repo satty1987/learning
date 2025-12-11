@@ -32,7 +32,7 @@ export class DrawingBoardComponent implements AfterViewInit {
   history: string[] = [];
   historyStep = -1;
   
-  colors = ['#000000', '#ff0000', '#0000ff', '#ffff00', '#00ff00'];
+  colors = ['#000000', '#ff0000', '#e20074', '#ffff00', '#00ff00'];
 
   ngAfterViewInit() {
     const canvas = this.canvasRef.nativeElement;
