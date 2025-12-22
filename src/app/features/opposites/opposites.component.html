@@ -1,0 +1,60 @@
+<div class="opposites-screen screen">
+  <div class="header-row">
+    <button class="back-btn" (click)="goBack()">← Home</button>
+    <div class="progress-chip">
+      {{ currentIndex + 1 }} / {{ pairs.length }}
+    </div>
+  </div>
+
+  <div class="score">
+    Opposites stars: {{ score }} ⭐
+  </div>
+
+  <div class="pair-card" [style.background]="currentPair.gradient">
+    <div class="card-top">
+      <div class="theme-chip">Theme: {{ currentPair.theme }}</div>
+      <button class="ghost-btn" (click)="speakPair()">🔊 Hear both</button>
+    </div>
+
+    <div class="word-grid">
+      <div class="word-panel">
+        <div class="emoji">{{ currentPair.left.emoji }}</div>
+        <div class="word">{{ currentPair.left.word }}</div>
+        <p class="hint">{{ currentPair.left.hint }}</p>
+        <button class="speak-btn" (click)="speak(currentPair.left.word)">
+          Say "{{ currentPair.left.word }}"
+        </button>
+      </div>
+
+      <div class="word-panel opposite" [class.covered]="!showOpposite">
+        <div class="emoji">{{ currentPair.right.emoji }}</div>
+        <div class="word">{{ currentPair.right.word }}</div>
+        <p class="hint">{{ currentPair.right.hint }}</p>
+        <button class="speak-btn" (click)="speak(currentPair.right.word)" [disabled]="!showOpposite">
+          Say "{{ currentPair.right.word }}"
+        </button>
+        <div class="cover" *ngIf="!showOpposite">?</div>
+      </div>
+    </div>
+
+    <p class="example">
+      <span>Example:</span> {{ currentPair.example }}
+    </p>
+
+    <div class="actions">
+      <button class="primary-btn" (click)="revealOpposite()" [disabled]="showOpposite">
+        Reveal Opposite
+      </button>
+      <button class="ghost-btn" (click)="speakPair()">Play both words</button>
+    </div>
+
+    <app-navigation
+      [canGoPrevious]="canGoPrevious"
+      [canGoNext]="canGoNext"
+      (previous)="previous()"
+      (next)="next()"
+    ></app-navigation>
+  </div>
+
+  <app-celebration *ngIf="showCelebration"></app-celebration>
+</div>

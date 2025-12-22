@@ -28,6 +28,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/shapes/shapes.module').then(m => m.ShapesModule)
   },
   {
+    path: 'opposites',
+    loadChildren: () => import('./features/opposites/opposites.module').then(m => m.OppositesModule)
+  },
+  {
     path: 'animals',
     loadChildren: () => import('./features/animals/animals.module').then(m => m.AnimalsModule)
   },
