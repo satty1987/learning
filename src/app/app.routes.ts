@@ -84,10 +84,15 @@ export const routes: Routes = [
     loadChildren: () => import('./features/story-time/story-time.module')
       .then(m => m.StoryTimeModule)
   },
-    {
+  {
     path: 'music-maker',
     loadChildren: () => import('./features/music-maker/music-maker.module')
       .then(m => m.MusicMakerModule)
+  },
+  {
+    path: 'resources',
+    loadChildren: () => import('./features/resources/resources.module')
+      .then(m => m.ResourcesModule)
   },
   {
     path: '**',
