@@ -1,0 +1,42 @@
+<div class="rhymes-screen screen">
+  <div class="header-row">
+    <button class="back-btn" (click)="goBack()">← Home</button>
+    <div class="progress-chip">{{ currentIndex + 1 }} / {{ cards.length }}</div>
+  </div>
+
+  <div class="score">Rhyme stars: {{ score }} ⭐</div>
+
+  <div class="rhyme-card" [style.background]="currentCard.gradient">
+    <div class="card-top">
+      <div class="base-word">
+        <div class="emoji">{{ currentCard.baseEmoji }}</div>
+        <div class="word">{{ currentCard.baseWord }}</div>
+        <p class="hint">Tap a word that rhymes with {{ currentCard.baseWord }}.</p>
+        <button class="ghost-btn" (click)="speak(currentCard.baseWord)">Hear "{{ currentCard.baseWord }}"</button>
+      </div>
+      <button class="ghost-btn" (click)="speak(currentCard.baseWord + ' rhymes with...')">
+        🔊 Read prompt
+      </button>
+    </div>
+
+    <div class="options">
+      <div class="option" *ngFor="let option of currentCard.options" (click)="playRhyme(option)">
+        <div class="emoji">{{ option.emoji }}</div>
+        <div class="word">{{ option.word }}</div>
+        <p class="hint">{{ option.hint }}</p>
+        <p class="example">Example: {{ option.example }}</p>
+      </div>
+    </div>
+
+    <p class="feedback" *ngIf="feedback">{{ feedback }}</p>
+
+    <app-navigation
+      [canGoPrevious]="canGoPrevious"
+      [canGoNext]="canGoNext"
+      (previous)="previous()"
+      (next)="next()"
+    ></app-navigation>
+  </div>
+
+  <app-celebration *ngIf="showCelebration"></app-celebration>
+</div>

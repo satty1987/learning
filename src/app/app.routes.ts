@@ -32,6 +32,14 @@ export const routes: Routes = [
     loadChildren: () => import('./features/opposites/opposites.module').then(m => m.OppositesModule)
   },
   {
+    path: 'rhymes',
+    loadChildren: () => import('./features/rhymes/rhymes.module').then(m => m.RhymesModule)
+  },
+  {
+    path: 'addition',
+    loadChildren: () => import('./features/addition/addition.module').then(m => m.AdditionModule)
+  },
+  {
     path: 'animals',
     loadChildren: () => import('./features/animals/animals.module').then(m => m.AnimalsModule)
   },

@@ -1,0 +1,37 @@
+<div class="addition-screen screen">
+  <div class="header-row">
+    <button class="back-btn" (click)="goBack()">← Home</button>
+    <div class="progress-chip">{{ currentIndex + 1 }} / {{ problems.length }}</div>
+  </div>
+
+  <div class="score">Math stars: {{ score }} ⭐</div>
+
+  <div class="addition-card">
+    <div class="problem">
+      <div class="numbers">
+        <div class="number">{{ currentProblem.a }}</div>
+        <div class="plus">+</div>
+        <div class="number">{{ currentProblem.b }}</div>
+      </div>
+      <p class="clue">{{ currentProblem.clue }}. What is the total?</p>
+      <button class="primary-btn" (click)="readQuestion()">🔊 Hear the question</button>
+    </div>
+
+    <div class="options">
+      <button class="option" *ngFor="let option of currentProblem.options" (click)="pickOption(option)">
+        {{ option }}
+      </button>
+    </div>
+
+    <p class="feedback" *ngIf="feedback">{{ feedback }}</p>
+
+    <app-navigation
+      [canGoPrevious]="canGoPrevious"
+      [canGoNext]="canGoNext"
+      (previous)="previous()"
+      (next)="next()"
+    ></app-navigation>
+  </div>
+
+  <app-celebration *ngIf="showCelebration"></app-celebration>
+</div>
