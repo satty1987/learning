@@ -1,0 +1,39 @@
+<div class="even-odd-screen screen">
+  <div class="header-row">
+    <button class="back-btn" (click)="goBack()">← Home</button>
+    <div class="progress-chip">{{ currentIndex + 1 }} / {{ cards.length }}</div>
+  </div>
+
+  <div class="score">Number stars: {{ score }} ⭐</div>
+
+  <div class="parity-card">
+    <div class="hint-chip">{{ currentCard.hint }}</div>
+    <div class="number-display">{{ currentCard.value }}</div>
+    <p class="prompt">Is this number even or odd?</p>
+
+    <div class="actions">
+      <button class="option even" (click)="answer('even')">Even</button>
+      <button class="option odd" (click)="answer('odd')">Odd</button>
+      <button class="ghost" (click)="speakCard()">🔊 Hear it</button>
+    </div>
+
+    <p class="feedback"
+       [class.correct]="feedback.startsWith('Great')"
+       [class.wrong]="feedback.startsWith('Almost')"
+       *ngIf="feedback">
+      {{ feedback }}
+    </p>
+
+    <div class="footer-row">
+      <button class="ghost small" (click)="restart()">↻ Restart</button>
+      <app-navigation
+        [canGoPrevious]="canGoPrevious"
+        [canGoNext]="canGoNext"
+        (previous)="previous()"
+        (next)="next()"
+      ></app-navigation>
+    </div>
+  </div>
+
+  <app-celebration *ngIf="showCelebration"></app-celebration>
+</div>

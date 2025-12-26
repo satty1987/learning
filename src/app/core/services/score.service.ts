@@ -11,6 +11,7 @@ export interface Scores {
   opposites: number;
   rhymes: number;
   addition: number;
+  evenOdd: number;
 }
 
 @Injectable({
@@ -26,7 +27,8 @@ export class ScoreService {
     quiz: 0,
     opposites: 0,
     rhymes: 0,
-    addition: 0
+    addition: 0,
+    evenOdd: 0
   });
 
   scores$ = this.scoresSubject.asObservable();

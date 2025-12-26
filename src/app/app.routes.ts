@@ -40,6 +40,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/addition/addition.module').then(m => m.AdditionModule)
   },
   {
+    path: 'even-odd',
+    loadChildren: () => import('./features/even-odd/even-odd.module').then(m => m.EvenOddModule)
+  },
+  {
     path: 'animals',
     loadChildren: () => import('./features/animals/animals.module').then(m => m.AnimalsModule)
   },

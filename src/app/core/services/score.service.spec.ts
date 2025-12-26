@@ -13,7 +13,18 @@ describe('ScoreService', () => {
 
 	it('should be created and have all scores zero initially', () => {
 		expect(service).toBeTruthy();
-		const expected: Scores = { abc: 0, numbers: 0, colors: 0, shapes: 0, animals: 0, quiz: 0 };
+		const expected: Scores = {
+			abc: 0,
+			numbers: 0,
+			colors: 0,
+			shapes: 0,
+			animals: 0,
+			quiz: 0,
+			opposites: 0,
+			rhymes: 0,
+			addition: 0,
+			evenOdd: 0
+		};
 		let latest: Scores | undefined;
 		service.scores$.subscribe(v => (latest = v));
 		expect(latest).toEqual(expected);
@@ -46,4 +57,3 @@ describe('ScoreService', () => {
 		sub.unsubscribe();
 	});
 });
-
