@@ -99,6 +99,11 @@ export const routes: Routes = [
       .then(m => m.ResourcesModule)
   },
   {
+    path: 'punjabi-alphabet',
+    loadChildren: () => import('./features/punjabi-alphabet/punjabi-alphabet.module')
+      .then(m => m.PunjabiAlphabetModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
