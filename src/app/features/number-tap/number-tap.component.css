@@ -35,6 +35,10 @@
   margin-bottom: 10px;
   animation: bounce 2s infinite;
 }
+.text-big {
+  font-size: clamp(4rem, 12vw, 5rem);
+  cursor: pointer;
+}
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
