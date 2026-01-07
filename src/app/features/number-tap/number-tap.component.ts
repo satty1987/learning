@@ -63,11 +63,10 @@ export class NumberTapComponent {
   findNumber(item: Number): void {
     if (this.randomNumber() === item) {
       this.speechService.speak(`Your number ${item} is correct `);
-      this.findNumberGame = false;
 
       timer(2000).subscribe(() => {
-        this.speechService.speak(`Let's find another number`);
         this.randomNumber.set(this.randomNumberBetween(1, this.maxnumber.length));
+        this.speechService.speak(`Find Number ${this.randomNumber()}`);
       });
     } else {
       this.speechService.speak(`Try again`);
