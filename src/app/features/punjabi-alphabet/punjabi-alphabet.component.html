@@ -8,7 +8,7 @@
 
     <div class="alphabet-grid">
         @for (item of alphabet; track $index) {
-        <div class="letter-card" [class.active]="isActive(item.gurmukhi)" (click)="onLetterTap(item)">
+        <div class="letter-card" [class.active]="isActive(item.gurmukhi)" (click)="speakLetter(item)">
             <div class="letter">{{ item.gurmukhi }}</div>
             <div class="word">{{ item.transliteration }}</div>
             <div class="example">{{ item.example }}</div>

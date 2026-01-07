@@ -19,7 +19,7 @@ interface AlphabetItem {
   styleUrls: ['./number-tap.component.css']
 })
 export class NumberTapComponent {
-  maxnumber = Array.from({ length: 20 }, (_, i) => i + 1);
+  maxnumber = Array.from({ length: 10 }, (_, i) => i + 1);
  
 
   activeNumber: Number | null = null;
