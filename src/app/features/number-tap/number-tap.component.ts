@@ -20,7 +20,7 @@ interface AlphabetItem {
   styleUrls: ['./number-tap.component.css']
 })
 export class NumberTapComponent {
-  maxnumber = Array.from({ length: 10 }, (_, i) => i + 1);
+  maxnumber = Array.from({ length: 100 }, (_, i) => i + 1);
   randomNumber = signal(0);
   findNumberGame = false;
 
