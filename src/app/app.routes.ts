@@ -104,6 +104,11 @@ export const routes: Routes = [
       .then(m => m.PunjabiAlphabetModule)
   },
   {
+    path: 'text-learning',
+    loadChildren: () => import('./features/text-learning/text-learning.module')
+      .then(m => m.TextLearningModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

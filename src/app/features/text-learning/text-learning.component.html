@@ -1,0 +1,12 @@
+<div class="abc-screen screen" id="abcScreen">
+  <button class="back-btn" (click)="goBack()">← Back to Menu</button>
+  <div class="learning-card">
+    <div class="letter-display" [ngClass]="{'font-small': inputText.length > 7}">{{inputText }}</div>
+    <div class="word-display">
+      <input type="text" class="input-field"  placeholder="Type the word..." [(ngModel)]="inputText" />
+    </div>
+    <button class="say-btn" (click)="sayLetter()">
+      🔊 Say it!
+    </button>
+  </div>
+</div>

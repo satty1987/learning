@@ -1,0 +1,10 @@
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+.font-small{
+    font-size: clamp(2rem, 7vw, 4rem) !important;
+}
